@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Login Form</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<img class="wave" src="img/wavy.png">
+	<div class="container">
+		<div class="img">
+			<img src="img/bg1.png">
+		</div>
+		<div class="login-content">
+			<form action="../admin panael/argon-dashboard-master/index.html">
+				
+				<h2 class="title">Add Teacher</h2>
+				<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-id-card"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Login ID</h5>
+           		   		<input type="text" class="input" id="login">
+           		   </div>
+           		</div>
+				<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Password</h5>
+           		   		<input type="password" class="input" id="pass">
+           		   </div>
+           		</div>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter First Name</h5>
+           		   		<input type="text" class="input onlytxt"  id="fname">
+           		   </div>
+           		</div>
+				<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Middle Name</h5> 
+           		   		<input type="text" class="input onlytxt" id="mname">
+           		   </div>
+           		</div>
+				<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Last Name</h5>
+           		   		<input type="text" class="input onlytxt" id="lname">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-envelope-square"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Enter Designation</h5>
+           		    	<input type="text" class="input onlytxt" id="desig">
+            	   </div>
+            	</div>
+            	
+              <input type="button" onclick="Submit()" class="btn" value="ADD">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $(".onlytxt").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[A-Za-z ]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+//                $("#lblError").html("Only Alphabets allowed.");
+            }
+ 
+            return isValid;
+        });
+    });
+</script>
+
+
+
+<script>
+  function Submit(){
+    debugger;
+    var loginid = document.getElementById("login").value;
+    var pass =  document.getElementById("pass").value;
+    var fname = document.getElementById("fname").value;
+    var mname = document.getElementById("mname").value;
+    var lname = document.getElementById("lname").value;
+    var desig = document.getElementById("desig").value;
+
+
+
+$.ajax ({
+            url: "http://navigation.somee.com/api/SetupForm/Insert_Teacher",
+            data: JSON.stringify({ first_Name : fname, middle_Name : mname , last_Name : lname , designation : desig , login_ID : loginid , login_Password : pass }), 
+ 
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data);   
+               if(data.message == "Teacher Successfully Added!"){
+                toastr.success(data.message);
+             
+               }
+               else{
+                toastr.error(data.message);
+               }
+
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+      
+            }
+        });
+
+  }
+</script>

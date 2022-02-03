@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Select Timetable</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <!-- Favicon -->
+  <link rel="icon" href="../dot.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+    
+</head>
+   
+<body>
+	 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+        <a class="navbar-brand" href="javascript:void(0)">
+          <h2>Smart InNavigation</h2>
+        </a>
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="dashboard.html">
+                <i class="ni ni-tv-2 text-primary"></i>
+                <span class="nav-link-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="teachertable.html">
+                <i class="ni ni-hat-3 text-orange"></i>
+                <span class="nav-link-text">Teacher</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="studenttable.html">
+                <i class="ni ni-single-02 text-primary"></i>
+                <span class="nav-link-text">Student</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="coursestable.html">
+                <i class="ni ni-books text-yellow"></i>
+                <span class="nav-link-text">Courses</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tables.html">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">TimeTables</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../../teacher form/adminlogin.html">
+                <i class="ni ni-key-25 text-info"></i>
+                <span class="nav-link-text">Login</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="roomtable.html">
+                <i class="ni ni-map-big text-pink"></i>
+                <span class="nav-link-text">Rooms</span>
+              </a>
+            </li>
+			  <li class="nav-item">
+              <a class="nav-link" href="Assigncourse.html">
+                <i class="ni ni-books text-black"></i>
+                <span class="nav-link-text">Assign courses</span>
+              </a>
+            </li>
+			 <li class="nav-item">
+              <a class="nav-link" href="selecttimetable.html">
+                  <i class="ni ni-bullet-list-67 text-teal"></i>
+                <span class="nav-link-text">Filter TimeTable</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-gray border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Search form -->
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                <i class="ni ni-zoom-split-in"></i>
+              </a>
+            </li>
+          </ul>
+   
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="../avva.png">
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">Admin</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu  dropdown-menu-right ">
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                </div>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-settings-gear-65"></i>
+                  <span>Settings</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header -->
+    <!-- Header -->
+   <div class="header bg-gray pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+        </div>
+      </div>
+    </div>
+	   <div class="card-header border-0">
+              <h3 class="mb-0"></h3>
+            </div>
+            
+	
+		<!--<div class="d">
+  <select class="select" id="teacher">
+   <!.. <option value="0">Select Teacher</option>.
+  </select>
+	<br><br>
+   <select class="select" id="course">
+    <option value="0">Select Courses</option>
+  </select></div>--><br>
+        
+           		  
+           		   <div class="select-wrapper">
+                      <select class="select" id="depart">
+                        <option value="0">Select Department</option>
+                      </select>
+                   
+            	<br><br>
+           		  
+                      <select class="select" id="">
+                        <option value="0">Select Batch</option>
+                        <option value="">CS-2018</option>
+                        <option value="">SE-2018</option>
+                      </select>
+                    
+            	
+  <br><br>
+                      <select class="select" id="sem">
+                        <option value="0">Select Semester</option>
+                      </select>
+                   
+            	<br><br>
+                      <select class="select" id="">
+                        <option value="0">Select Days</option>
+                          <option value="">Monday</option>
+                          <option value="">Tuesday</option>
+                          <option value="">Wednesday</option>
+                          <option value="">Thursday</option>
+                          <option value="">Friday</option>
+                          <option value="">Saturday</option>
+                      </select>
+                    
+            	<br><br>
+                       <a href="filtertimetable.html">
+              	<input type="button" onclick="Submit()" class="bu" value="SUBMIT"> </a>
+
+	</div>
+      <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+              &copy;<a href="../../../samrt in main web/web/index.html" class="font-weight-bold ml-1" target="_blank">SmartInNavigation</a>
+            </div>
+          </div>
+          
+        </div>
+      </footer>
+    </div>
+</body>
+</html>
+
+
+<script>
+$( document ).ready(function() {
+        GetDepartment();
+        GetSemester();
+       
+});
+    
+ function GetDepartment(){
+        $.ajax ({
+            url: "http://navigation.somee.com/api/SetupForm/FetchDepartmentList",
+            data: {}, 
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data);
+                $.each(data.data, function (i, item) {
+                    $('#depart').append($('<option>', { 
+                        value: item.department_ID,
+                        text : item.department_Name 
+                    }));
+                });
+               
+            },
+            
+            error: function(er){
+
+                console.log(er)
+      
+            }
+        });
+    }
+    
+     
+    
+
+    
+   function GetSemester(){
+    
+    $.ajax ({
+            url: "http://navigation.somee.com/api/SetupForm/FetchSemesterList",
+            data: {}, 
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data);
+                $.each(data.data, function (i, item) {
+                    $('#sem').append($('<option>', { 
+                        value: item.semester_ID,
+                        text : item.semester_Name 
+                    }));
+                });
+               
+            },
+            
+            error: function(er){
+
+                console.log(er)
+      
+            }
+        });
+
+  }
+
+    
+    
+      function Submit(){
+    debugger;
+   
+     
+    var depart = parseInt(document.getElementById("depart").value);
+    var sem = parseInt(document.getElementById("sem").value);
+          
+
+    $.ajax ({
+            url: "http://navigation.somee.com/api/SetupForm/FetchTimeTable_Filter",
+            data: JSON.stringify({ department_ID : depart , semester_ID : sem , timetable_ID : year }), 
+ 
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data);   
+               if(data.message == "already exist!"){
+                   
+                toastr.error(data.message);
+             
+               }
+               else if(data.message == " Successfully Added!"){
+                toastr.success(data.message);
+               }
+                else{
+                    toastr.error(data.message);
+                }
+
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+      
+            }
+        });
+
+  }
+
+    
+</script>
+

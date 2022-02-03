@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>editbutton</title>
+</head>
+<style>
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 90%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  margin-left: 10%;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+	height: 40%;
+	font-family: 'poppin', sans-serif;
+	color: #999;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+<body>
+	<button id="myBtn" style="display: block;
+	width: 9%;
+	height: 40px;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #008B8B, #008B8B, #00FFFF);
+	background-size: 200%;
+	font-size: 1.1rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;">Edit</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	  <br>
+    <p>Edit the details..</p>
+	  <div class="input-div one">
+           		 
+           		   <div class="div">
+           		   		<h5></h5>
+           		   		<input type="text" class="input" id="login" style=" border-style: 2px solid #999; width: 30%; height: 25px;">
+					   <input type="text" class="input" id="login1" style=" border-style: 2px solid #999; width: 30%; margin-left: 2%; height: 25px">
+					   <input type="text" class="input" id="login2" style=" border-style: 2px solid #999; width: 30%; margin-left: 2%; height: 25px">
+					   <br><br>
+					   <input type="text" class="input" id="login3" style=" border-style: 2px solid #999; width: 30%; height: 25px">
+					   <input type="text" class="input" id="login4" style=" border-style: 2px solid #999; width: 30%; margin-left: 2%; height: 25px">
+					   <input type="text" class="input" id="login5" style=" border-style: 2px solid #999; width: 30%; margin-left: 2%; height: 25px">
+           		   </div>
+           		</div>
+	 <a href="filtertimetable.html"> <button style="float: right;display: block;
+	width: 20%;
+	height: 50px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #008B8B, #008B8B, #00FFFF);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;">Done</button></a>
+  </div>
+
+</div>
+	
+	<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

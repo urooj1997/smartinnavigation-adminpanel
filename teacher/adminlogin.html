@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<title>login</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .loading svg{
+            animation: spin linear infinite 1s;
+            fill: #fff;
+            width: 30px;
+        }
+        @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+        </style>
+</head>
+
+<body>
+	<img class="wave" src="img/wavy.png">
+	<div class="container">
+		<div class="img">
+			<img src="working-01.png">
+		</div>
+		<div class="login-content">
+			<form action="file:///C:/Users/WORK/Downloads/my%20proj/Smart%20In%20Navigation%20folder/admin%20panael/argon-dashboard-master/examples/dashboard.html" >
+				<h2 class="title">Admin Login</h2>
+				<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Login ID</h5>
+           		   		<input type="text" class="input" id="loginid">
+           		   </div>
+           		</div>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Password</h5>
+           		   		<input type="password" class="input" id="password">
+           		   </div>
+           		</div>
+		
+            	<button type="button" id="login" onclick="Submit();" class="btn btn-primary my-4" >Log in</button>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
+
+<script>
+
+    
+    $( document ).ready(function() {
+        debugger;
+        if(sessionStorage.getItem("role") == "Admin"){
+            window.location.href = "/admin/examples/dashboard.html";
+        }
+        else{
+            window.location.href = "#";
+        }
+    });
+    
+    
+   function Submit(){
+    debugger;
+    const btn = document.getElementById("login");
+    btn.innerHTML = `<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg fill="#000000" width="52" height="52" version="1.1" id="lni_lni-spinner" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<g>
+	<circle cx="33.3" cy="9.8" r="6.8"/>
+	<circle cx="33.3" cy="57.2" r="3.8"/>
+	<path d="M57,31c-1.4,0-2.5,1.1-2.5,2.5c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5C59.4,32.2,58.3,31,57,31z"/>
+	<path d="M14.4,33.5c0-2.7-2.2-4.9-4.9-4.9s-4.9,2.2-4.9,4.9s2.2,4.9,4.9,4.9S14.4,36.2,14.4,33.5z"/>
+	<circle cx="50.1" cy="50.2" r="3.1"/>
+	<path d="M12.6,12.7c-2.2,2.2-2.2,5.7,0,7.8s5.7,2.2,7.8,0s2.2-5.7,0-7.8S14.7,10.6,12.6,12.7z"/>
+	<path d="M51.4,18c0.7-0.7,0.7-1.9,0-2.6c-0.7-0.7-1.9-0.7-2.6,0c-0.7,0.7-0.7,1.9,0,2.6C49.4,18.8,50.6,18.8,51.4,18z"/>
+	<circle cx="16.5" cy="50.3" r="4.3"/>
+</g>
+</svg>
+`;
+btn.classList.add("loading");
+
+
+   
+    var id = document.getElementById("loginid").value;
+    var pass = document.getElementById("password").value;
+    var role = 3;   
+        
+
+    $.ajax ({
+            url: "http://navigation123.somee.com/api/SetupForm/Login",
+            data: JSON.stringify({ login_ID : id , login_Password : pass , role : role }), 
+ 
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data);   
+               if(data.statusCode === 200 && data.isSuccess){
+                   sessionStorage.setItem("role" , "Admin");
+                   toastr.success(data.message);
+                    setTimeout(window.location.href = "/admin/examples/dashboard.html", 500);
+                    btn.innerHTML = "Log in"
+                    btn.classList.remove("loading")
+               }
+                else{
+                toastr.error(data.message);
+                    btn.innerHTML = "Log in"
+                    btn.classList.remove("loading")
+   
+                }
+
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+                    btn.innerHTML = "Log in"
+                    btn.classList.remove("loading")
+      
+            }
+        });
+
+  }
+
+</script>

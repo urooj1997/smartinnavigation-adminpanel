@@ -1,0 +1,492 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>studentstable</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <!-- Favicon -->
+  <link rel="icon" href="../dot.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+  
+</head>
+
+<body>
+     <style>
+        .tbl-heading{
+            padding: 18px 10px 14px 1px;
+    font-size: 20px;
+        }
+        .deletebtn{
+            width: 70px; height: 30px; background: #36ccab; color: white; border:#36ccab; border-radius: 4px;
+        }
+    </style>
+	 <!-- Sidenav -->
+  <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+        <a class="navbar-brand" href="javascript:void(0)">
+          <h2>Smart InNavigation</h2>
+        </a>
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="dashboard.html">
+                <i class="ni ni-tv-2 text-primary"></i>
+                <span class="nav-link-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="teachertable.html">
+                <i class="ni ni-hat-3 text-orange"></i>
+                <span class="nav-link-text">Teacher</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="studenttable.html">
+                <i class="ni ni-single-02 text-primary"></i>
+                <span class="nav-link-text">Student</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="coursestable.html">
+                <i class="ni ni-books text-yellow"></i>
+                <span class="nav-link-text">Courses</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tables.html">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">TimeTables</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="roomtable.html">
+                <i class="ni ni-map-big text-pink"></i>
+                <span class="nav-link-text">Rooms</span>
+              </a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="Assigncourse.html">
+                <i class="ni ni-books text-black"></i>
+                <span class="nav-link-text">Assign Courses</span>
+              </a>
+            </li>
+               
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-gray border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Search form -->
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                <i class="ni ni-zoom-split-in"></i>
+              </a>
+            </li>
+          </ul>
+   
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="../avva.png">
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">Admin</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu  dropdown-menu-right ">
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                </div>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-settings-gear-65"></i>
+                  <span>Settings</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="/" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-gray pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <!-- Card header -->
+            <div class="card-header border-0">
+				 <h3 class="mb-0">Students<input id="gfg" type="text" placeholder="Search here" style="width: 30%; height: 40px; margin-left: 24%; outline: none; color: #8b7d77; border-bottom-color: #36ccab; border-right-style: none; border-left-style: none; border-top-style: none;"><i class="fas fa-search" style="color: #36ccab;"></i> 
+			<a href="/teacher/addstudent.html"><button style="width: 100px; height: 40px; background:#36ccab; color: white; border:#36ccab; border-radius: 6px;  float: right;">Add</button></a>
+			</h3> 
+            </div>
+            <!-- Light table -->
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+               <thead class="thead-light">
+                  <tr>
+                    <th scope="col">S. No</th>
+                      <th scope="col">Id</th>
+					<th scope="col">First name</th>
+                    <th scope="col">Middle name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Batch</th>
+					<th scope="col">Semester</th>
+					<th scope="col">Department</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+                  </tr>
+                </thead>
+               <tbody id="tbl">
+                  
+                  
+                </tbody>
+              </table>
+            </div>
+            <!-- Card footer -->
+           
+          </div>
+        </div>
+      </div>
+     
+	 
+      <!-- Footer -->
+       <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+              &copy;<a href="/" class="font-weight-bold ml-1" target="_blank">SmartInNavigation</a>
+            </div>
+          </div>
+          
+        </div>
+      </footer>
+    </div>
+  </div>
+    
+    
+    
+    
+    
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div id="ids" hidden></div>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center">
+          <div class="container-fluid">
+               <div class="row">
+              <div class="col-md-12">
+            <div class="form-group">
+              <label >First Name</label>
+              <input type="text" class="form-control onlytxt" id="fname">
+            </div>
+                </div>
+                
+              </div>
+            
+              <div class="row">
+                  <div class="col-md-12">
+                   <div class="form-group">
+                  <label >Middle Name</label>
+                  <input type="text" class="form-control onlytxt" id="mname">
+                </div>
+                  </div>    
+             </div>  
+              <div class="row">
+              <div class="col-md-12">
+            <div class="form-group">
+              <label >Last Name</label>
+              <input type="text" class="form-control onlytxt" id="lname">
+            </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                   <div class="form-group">
+                  <label >Batch</label>
+                  <input type="text" class="form-control" id="batch">
+                </div>
+                </div>    
+             </div>   
+              <div class="row">
+                <div class="col-md-12">
+                   <div class="form-group">
+                  <label >Semester</label>
+                    <div class="form-group">
+                <select  class="form-control" id="sem">
+                        <option value="0">Select Days</option>
+                          <option value="1">1st</option>
+                          <option value="2">2nd</option>
+                          <option value="3">3rd</option>
+                          <option value="4">4th</option>
+                          <option value="5">5th</option>
+                          <option value="6">6th</option>
+                          <option value="7">7th</option>
+                          <option value="8">8th</option>
+                </select>
+                </div>
+                </div>
+                </div>    
+             </div>
+          </div>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="update();" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    
+    
+    
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- Argon JS -->
+  <script src="../assets/js/argon.js?v=1.2.0"></script>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $(".onlytxt").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[A-Za-z ]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+//                $("#lblError").html("Only Alphabets allowed.");
+            }
+ 
+            return isValid;
+        });
+    });
+    
+</script>
+
+<script >
+    
+  $( document ).ready(function() {
+      getstudent();
+	  $("#gfg").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#tbl tr").filter(function() {
+                        $(this).toggle($(this).text()
+                        .toLowerCase().indexOf(value) > -1)
+                    });
+                });
+});
+
+    function getstudent(){
+        var i = 1;
+    $.ajax ({
+            url: "http://navigation123.somee.com/api/SetupForm/FetchStudentList",
+            data: { }, 
+ 
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data);   
+                $("#tbl").empty();
+
+              $.each(data.data, function (key, value) 
+                    {
+                  $("#tbl").append('<tr><td>'+ i +'</td><td>'+value.login_ID+'</td><td>'+value.first_Name+'</td><td>'+value.middle_Name+'</td><td>'+value.last_Name+'</td><td>'+value.batch+'</td><td>'+value.semester_Name+'</td><td>'+value.department_Name+'</td><td> <a href="#" ><button class="deletebtn" onclick="edit('+value.student_ID+')">Edit</button></a></td><td> <a href="#" ><button class="deletebtn" onclick="deletestudent('+value.student_ID+')">Delete</button></a></td></tr>');
+                  i++;
+                    }
+                    )
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+      
+            }
+        });
+    }
+  function deletestudent(id){
+        $.ajax ({
+            url: "http://navigation123.somee.com/api/SetupForm/ChangeStudentStatus_ByID",
+            data: JSON.stringify({ student_ID : id , is_Active : false  }), 
+ 
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data); 
+                if(data.message == "Successfully Changed!"){
+                     toastr.success("Student Successfully deleted!");
+                     getstudent();
+                }
+                else{
+                     toastr.error("Operation Failed!");
+                }
+               
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+      
+            }
+        });
+  }
+    var depatmentid = 0;
+    function edit(id){
+    $('#Modal').modal('show');
+    $.ajax ({
+            url: "http://navigation123.somee.com/api/SetupForm/FetchStudent_ByID",
+            data: JSON.stringify({ id : id }), 
+ 
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data); 
+                $("#fname").val(data.data.first_Name);
+                $("#mname").val(data.data.middle_Name);
+                $("#lname").val(data.data.last_Name);
+                $("#batch").val(data.data.batch);
+                $("#sem").val(data.data.semester_ID).change();
+                $("#ids").val(data.data.student_ID);
+                depatmentid = parseInt(data.data.department_ID);
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+      
+            }
+        });
+}
+function update(){
+          var fname = $("#fname").val();
+          var mname = $("#mname").val();
+          var lname = $("#lname").val();
+          var batch = $("#batch").val();
+          var sem = parseInt($("#sem").val());
+          var id = parseInt($("#ids").val());
+            
+      $.ajax ({
+            url: "http://navigation123.somee.com/api/SetupForm/Update_Student",
+            data: JSON.stringify({ first_Name : fname , middle_Name : mname , last_Name : lname , batch : batch , student_ID :id , semester_ID : sem , department_ID : depatmentid}), 
+ 
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data); 
+                
+                getstudent();
+                $('#Modal').modal('hide');
+                toastr.success("Successfully Updated!");
+
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+      
+            }
+        });
+}
+</script>
+

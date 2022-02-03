@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<title>Rooms</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<img class="wave" src="img/wavy.png">
+	<div class="container">
+		<div class="img">
+			<img src="student-01.png">
+		</div>
+		<div class="login-content">
+			<form action="../admin panael/argon-dashboard-master/index.html" >
+				
+				<h2 class="title">Add Rooms</h2>
+				<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-minus-square"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Room Code</h5>
+           		   		<input type="text" class="input" id="rcode">
+           		   </div>
+           		</div>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-book"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Enter Room Name</h5>
+           		   		<input type="text" class="input onlytxt" id="rname">
+           		   </div>
+           		</div>
+		
+            	<input type="button" onclick="Submit()" class="btn" value="ADD">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $(".onlytxt").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[A-Za-z ]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+//                $("#lblError").html("Only Alphabets allowed.");
+            }
+ 
+            return isValid;
+        });
+    });
+</script>
+
+
+<script>
+  function Submit(){
+    debugger;
+    var roomcode = document.getElementById("rcode").value;
+    var roomname =  document.getElementById("rname").value;
+   
+
+
+
+$.ajax ({
+            url: "http://navigation123.somee.com/api/SetupForm/Insert_Rooms",
+            data: JSON.stringify({ room_Name : roomname, room_Code : roomcode  }), 
+ 
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+
+            crossDomain:true,
+            
+            success: function(data){
+                debugger;
+                console.log(data);   
+               if(data.message == "Rooms Successfully Added!"){
+                toastr.success(data.message);
+             
+               }
+               else{
+                toastr.error(data.message);
+               }
+
+            
+            },
+            
+            error: function(er){
+
+
+                console.log(er)
+      
+            }
+        });
+
+  }
+</script>
